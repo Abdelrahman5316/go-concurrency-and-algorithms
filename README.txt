@@ -1,117 +1,87 @@
+GO CONCURRENCY AND ALGORITHMS
+=============================
+
+OVERVIEW
+--------
+This repository contains a Go package implementing several core programming
+tasks. The project demonstrates mathematical computation, Unicode-safe string
+processing, map-based aggregation, and parallel counting using goroutines
+and channels.
+
+The code is structured as a testable Go module and is intended to be executed
+using the Go testing framework.
 
 
-<head>
-    <meta charset="UTF-8">
-    <title>Go Concurrency and Algorithms</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        nav {
-            margin-bottom: 30px;
-            padding: 15px;
-            background-color: #f4f4f4;
-            border-radius: 6px;
-        }
-        nav a {
-            margin-right: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            color: #2980b9;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        code {
-            background-color: #eeeeee;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: Consolas, monospace;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        footer {
-            margin-top: 50px;
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
-</head>
-<body>
+PROJECT STRUCTURE
+-----------------
+asg1.go          Implementation of all tasks
+asg1_test.go     Unit tests
+list.txt         Input data file used for concurrency testing
+go.mod           Module definition
 
-<h1>Go Concurrency and Algorithms</h1>
 
-<nav>
-    <a href="#overview">Overview</a>
-    <a href="#structure">Project Structure</a>
-    <a href="#tasks">Implemented Tasks</a>
-    <a href="#requirements">Requirements</a>
-    <a href="#tests">Running Tests</a>
-</nav>
+IMPLEMENTED TASKS
+-----------------
 
-<div class="section" id="overview">
-    <h2>Overview</h2>
-    <p>
-        This repository contains a Go package implementing mathematical computation,
-        Unicode-safe string processing, data aggregation, and parallel counting
-        using goroutines and channels.
-    </p>
-</div>
+1) Sum of Squares
+   Computes:
+   0^2 + 1^2 + 2^2 + ... + |n|^2
 
-<div class="section" id="structure">
-    <h2>Project Structure</h2>
-    <ul>
-        <li><code>asg1.go</code> – Implementation of tasks</li>
-        <li><code>asg1_test.go</code> – Unit tests</li>
-        <li><code>list.txt</code> – Input data file for concurrency test</li>
-        <li><code>go.mod</code> – Module definition</li>
-    </ul>
-</div>
+   Function:
+   getSumSquares(n int) int
 
-<div class="section" id="tasks">
-    <h2>Implemented Tasks</h2>
 
-    <h3>1. Sum of Squares</h3>
-    <p>Computes <code>0^2 + 1^2 + ... + |n|^2</code></p>
-    <p><code>getSumSquares(n int) int</code></p>
+2) Word Extraction
+   Extracts all words from a string that end with a specified rune.
+   The implementation is Unicode-safe.
 
-    <h3>2. Word Extraction</h3>
-    <p>Extracts words ending with a specified rune (Unicode-safe).</p>
-    <p><code>getWords(text string, endLetter rune) []string</code></p>
+   Function:
+   getWords(text string, endLetter rune) []string
 
-    <h3>3. Course Registration Aggregation</h3>
-    <p>Counts unique student registrations per course.</p>
-    <p><code>getCourseInfo(records []RegRecord) map[string]int</code></p>
 
-    <h3>4. Parallel Count</h3>
-    <p>Counts occurrences of a key using goroutines and channels.</p>
-    <p><code>count(list []int, key int, numThreads int) int</code></p>
-</div>
+3) Course Registration Aggregation
+   Returns a map containing the number of unique students registered
+   per course. Duplicate registration records are ignored.
 
-<div class="section" id="requirements">
-    <h2>Requirements</h2>
-    <p>Go 1.18 or newer</p>
-    <p>Check installation:</p>
-    <p><code>go version</code></p>
-</div>
+   Function:
+   getCourseInfo(records []RegRecord) map[string]int
 
-<div class="section" id="tests">
-    <h2>Running Tests</h2>
-    <p>Execute from project directory:</p>
-    <p><code>go test</code></p>
-    <p>Verbose mode:</p>
-    <p><code>go test -v</code></p>
-</div>
 
-<footer>
-    <p>Demonstrates Go concurrency, maps, Unicode processing, and unit testing.</p>
-</footer>
+4) Parallel Count
+   Counts the number of occurrences of a key in a list of integers.
+   The computation is performed in parallel using multiple goroutines
+   and channels for synchronization.
 
-</body>
+   Function:
+   count(list []int, key int, numThreads int) int
 
+
+REQUIREMENTS
+------------
+Go 1.18 or newer.
+
+Verify installation:
+    go version
+
+
+RUNNING TESTS
+-------------
+From the project directory:
+
+    go test
+
+Verbose mode:
+
+    go test -v
+
+Run a specific test:
+
+    go test -run TestGetWords -v
+
+
+NOTES
+-----
+- The file "list.txt" must be present in the same directory when running tests.
+- This project does not contain a main() function.
+- The code demonstrates use of goroutines, channels, maps, and
+  Unicode-aware string handling.
