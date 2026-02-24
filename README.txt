@@ -1,6 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Go Concurrency and Algorithms</title>
@@ -115,4 +114,4 @@
 </footer>
 
 </body>
-</html>
+
