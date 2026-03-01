@@ -12,14 +12,6 @@ The code is structured as a testable Go module and is intended to be executed
 using the Go testing framework.
 
 
-PROJECT STRUCTURE
------------------
-asg1.go          Implementation of all tasks
-asg1_test.go     Unit tests
-list.txt         Input data file used for concurrency testing
-go.mod           Module definition
-
-
 IMPLEMENTED TASKS
 -----------------
 
